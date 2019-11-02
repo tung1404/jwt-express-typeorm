@@ -3,9 +3,16 @@
   "version": "0.0.1",
   "description": "Awesome project developed with TypeORM.",
   "devDependencies": {
-    "ts-node": "3.3.0",
+    "@types/jest": "^24.0.21",
     "@types/node": "^8.0.29",
-    "typescript": "2.5.2"
+    "@types/request-promise": "^4.1.44",
+    "@types/supertest": "^2.0.8",
+    "jest": "^24.9.0",
+    "request-promise": "^4.2.4",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.1.0",
+    "ts-node": "3.3.0",
+    "typescript": "^3.6.4"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -21,13 +28,30 @@
     "helmet": "^3.15.0",
     "jsonwebtoken": "^8.4.0",
     "reflect-metadata": "^0.1.10",
-    "sqlite3": "^4.0.3",
+    "sqlite3": "^4.1.0",
     "ts-node-dev": "^1.0.0-pre.32",
     "typeorm": "0.2.12"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   },
   "scripts": {
     "tsc": "tsc",
     "start": "set debug=* && ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "test": "jest --verbose --forceExit",
+    "coverage": "jest --coverage --forceExit",
     "prod": "tsc && node ./build/app.js",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run"
   }
